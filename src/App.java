@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.MouseInputAdapter;
@@ -28,6 +30,7 @@ public class App {
         main.setSize(1024, 576);
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         main.setLayout(null);
+        main.setResizable(false);
         //main.setLocationRelativeTo(null);
         //main.setVisible(true);
     }
@@ -42,9 +45,12 @@ public class App {
         }
         JList<String> list = new JList<>(l1);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //list.addListSelectionListener();
-        list.setBounds(100, 100, 300, 100);
-        main.add(list);
+        JScrollPane scrollPane = new JScrollPane(list); 
+        scrollPane.getViewport().add(list);
+        //list.setBounds(100, 100, 300, 100);
+        scrollPane.setBounds(100, 100, 300, 100);
+        //main.add(list);
+        main.add(scrollPane);
 
         JTextArea textArea = new JTextArea();
         textArea.setBounds(500, 100, 400, 400);
