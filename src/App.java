@@ -1,14 +1,15 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
 import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
@@ -31,8 +32,6 @@ public class App {
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         main.setLayout(null);
         main.setResizable(false);
-        //main.setLocationRelativeTo(null);
-        //main.setVisible(true);
     }
 
     public static void getItems() throws FileNotFoundException{
@@ -43,13 +42,14 @@ public class App {
             l1.addElement(child.getPath());
             System.out.println(child);
         }
+        
         JList<String> list = new JList<>(l1);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
         JScrollPane scrollPane = new JScrollPane(list); 
         scrollPane.getViewport().add(list);
-        //list.setBounds(100, 100, 300, 100);
         scrollPane.setBounds(100, 100, 300, 100);
-        //main.add(list);
+        
         main.add(scrollPane);
 
         JTextArea textArea = new JTextArea();
@@ -74,8 +74,7 @@ public class App {
 
                 }
             }
-        };
-                
+        };          
         list.addMouseListener(mouseListener);
         main.add(textArea);
     }
